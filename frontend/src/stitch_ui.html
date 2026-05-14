@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - Smart Leads</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#ffd2be",
+                      "on-secondary-fixed-variant": "#005236",
+                      "secondary-container": "#6cf8bb",
+                      "primary-container": "#4f46e5",
+                      "primary-fixed": "#e2dfff",
+                      "tertiary": "#7e3000",
+                      "on-tertiary-fixed": "#351000",
+                      "on-primary-fixed": "#0f0069",
+                      "on-surface-variant": "#464555",
+                      "surface-container-highest": "#e4e1ee",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-tertiary-fixed-variant": "#7b2f00",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#1b1b24",
+                      "surface-dim": "#dcd8e5",
+                      "surface-container-low": "#f5f2ff",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#f3effc",
+                      "primary": "#3525cd",
+                      "surface": "#fcf8ff",
+                      "secondary-fixed-dim": "#4edea3",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#fcf8ff",
+                      "surface-container-high": "#eae6f4",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#6ffbbe",
+                      "primary-fixed-dim": "#c3c0ff",
+                      "on-secondary-container": "#00714d",
+                      "inverse-primary": "#c3c0ff",
+                      "on-primary-container": "#dad7ff",
+                      "on-primary-fixed-variant": "#3323cc",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb695",
+                      "surface-variant": "#e4e1ee",
+                      "error-container": "#ffdad6",
+                      "inverse-surface": "#302f39",
+                      "secondary": "#006c49",
+                      "surface-tint": "#4d44e3",
+                      "outline": "#777587",
+                      "surface-container": "#f0ecf9",
+                      "tertiary-container": "#a44100",
+                      "on-surface": "#1b1b24",
+                      "background": "#fcf8ff",
+                      "on-secondary-fixed": "#002113",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#c7c4d8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "1rem",
+                      "base": "4px",
+                      "margin-desktop": "2.5rem",
+                      "sm": "0.5rem",
+                      "xl": "2rem",
+                      "margin-mobile": "1rem",
+                      "2xl": "3rem",
+                      "xs": "0.25rem",
+                      "lg": "1.5rem",
+                      "gutter": "1.5rem"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "title-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                      "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                      "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                      "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                      "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+                      "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                      "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                      "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                      "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface-container-low min-h-screen flex items-center justify-center p-margin-mobile md:p-margin-desktop text-on-surface">
+<main class="w-full max-w-[440px] bg-surface-container-lowest rounded-2xl shadow-[0px_1px_3px_rgba(0,0,0,0.1)] border border-outline-variant p-xl md:p-2xl flex flex-col">
+<!-- Header -->
+<div class="text-center mb-xl">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-xs">Smart Leads</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Sign in to manage your pipeline</p>
+</div>
+<!-- Form -->
+<form action="#" class="flex flex-col gap-lg" method="POST">
+<!-- Email Field (Showing Error State) -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface" for="email">Work Email</label>
+<div class="relative">
+<input aria-describedby="email-error" aria-invalid="true" class="w-full h-[44px] px-md py-sm rounded-lg border border-error bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:ring-2 focus:ring-error/20 focus:border-error focus:outline-none transition-all pr-10" id="email" name="email" type="email" value="alex@example"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-error text-[20px]" data-icon="error" style="font-variation-settings: 'FILL' 1;">error</span>
+</div>
+<p class="font-label-sm text-label-sm text-error mt-xs" id="email-error">Please enter a valid work email address.</p>
+</div>
+<!-- Password Field (Normal State) -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface" for="password">Password</label>
+<input class="w-full h-[44px] px-md py-sm rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none transition-all" id="password" name="password" type="password"/>
+</div>
+<!-- Options Row -->
+<div class="flex items-center justify-between mt-xs">
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary/20 bg-surface-container-lowest" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Remember me</span>
+</label>
+<a class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors" href="#">Forgot password?</a>
+</div>
+<!-- Submit Action -->
+<button class="w-full h-[44px] bg-primary text-on-primary rounded-lg font-title-md text-title-md hover:bg-surface-tint transition-colors flex items-center justify-center mt-sm" type="button">
+                Sign In
+            </button>
+</form>
+<!-- Divider -->
+<div class="relative flex items-center py-xl">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink-0 mx-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Or continue with</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Social Login -->
+<button class="w-full h-[44px] bg-surface-container-lowest border border-outline-variant text-on-surface rounded-lg font-title-md text-title-md hover:bg-surface-container transition-colors flex items-center justify-center gap-sm" type="button">
+<span class="font-body-md font-medium">Google</span>
+</button>
+<!-- Footer -->
+<div class="mt-xl text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Don't have an account? 
+                <a class="font-title-md text-title-md text-primary hover:text-primary-container transition-colors ml-xs" href="#">Register now</a>
+</p>
+</div>
+</main>
+</body></html>
