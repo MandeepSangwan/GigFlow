@@ -30,73 +30,124 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 dark:bg-gray-900">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg dark:bg-gray-800">
-        <div>
-          <h2 className="text-center text-3xl font-extrabold text-gray-900 dark:text-white">Create an account</h2>
+    <div className="bg-background text-on-background min-h-screen flex overflow-x-hidden w-full">
+      {/* Left Branding Section (Hidden on mobile) */}
+      <div className="hidden lg:flex lg:w-1/2 bg-surface-variant relative items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img alt="B2B abstract" className="object-cover w-full h-full opacity-60 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzpv3CAHKyRqV1eyByMcqFvRCumAHyPPgebmFpSqlbL9wgBdLXTJI-HM4ftfEAKWmUFhUcDaOeH_9isrBumMpYLeT-2wN29_jwkfVdyRFkLFYAjFv-XW7IITh6birQWO0r0CmiG1vaa5Jjf69cqLs5CzOJMYSfcRUaPSboMjx30eXkGXQtXIEBXsAh0MW-qfEkvyl_5awCsPN9q3KJbZlsKA8D6Qd62XTlG---HchbyC_f_0M0rEqWSPyZCX4yjlS42gHSTZCBPI8"/>
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-surface-tint/10 mix-blend-overlay"></div>
         </div>
-        {error && <div className="bg-red-50 text-red-500 p-3 rounded-md text-sm">{error}</div>}
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <input
-                name="name"
-                type="text"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                placeholder="Full Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
+        <div className="relative z-10 p-margin-desktop text-center flex flex-col items-center">
+          <div className="bg-surface-container-lowest p-sm rounded-xl mb-xl shadow-sm border border-outline-variant inline-flex items-center justify-center">
+            <span className="material-symbols-outlined text-[48px] text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>leaderboard</span>
+          </div>
+          <h1 className="font-display-lg text-display-lg text-primary-fixed mb-md drop-shadow-md">Smart Leads</h1>
+          <p className="font-title-lg text-title-lg text-surface-container-lowest max-w-md mx-auto drop-shadow-md">
+            Accelerate your pipeline with intelligent data-driven insights and streamlined management tools.
+          </p>
+        </div>
+      </div>
+
+      {/* Right Form Section */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-margin-mobile lg:p-margin-desktop bg-background">
+        <div className="w-full max-w-md">
+          {/* Mobile Logo Header */}
+          <div className="lg:hidden flex items-center gap-sm mb-xl justify-center">
+            <span className="material-symbols-outlined text-[32px] text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>leaderboard</span>
+            <span className="font-headline-md text-headline-md font-extrabold text-primary">Smart Leads</span>
+          </div>
+
+          {/* Registration Card */}
+          <div className="bg-surface-container-lowest rounded-2xl shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.05)] border border-outline-variant p-lg md:p-xl w-full">
+            <div className="mb-xl">
+              <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">Create your account</h2>
+              <p className="font-body-md text-body-md text-on-surface-variant">Start maximizing your lead conversions today.</p>
             </div>
-            <div>
-              <input
-                name="email"
-                type="email"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                placeholder="Email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <input
-                name="password"
-                type="password"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <div>
-              <select
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                value={role}
-                onChange={(e) => setRole(e.target.value as 'Sales User' | 'Admin')}
+            
+            {error && <div className="bg-error-container text-on-error-container p-3 rounded-md text-sm mb-4 font-body-md">{error}</div>}
+
+            <form className="space-y-lg flex flex-col" onSubmit={handleSubmit}>
+              {/* Full Name */}
+              <div className="flex flex-col gap-xs">
+                <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="fullName">Full Name</label>
+                <input 
+                  id="fullName" 
+                  name="name" 
+                  type="text" 
+                  required 
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Jane Doe"
+                  className="w-full rounded-lg border border-outline-variant px-md py-sm bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none transition-shadow" 
+                />
+              </div>
+
+              {/* Work Email */}
+              <div className="flex flex-col gap-xs">
+                <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="workEmail">Work Email</label>
+                <input 
+                  id="workEmail" 
+                  name="email" 
+                  type="email" 
+                  required 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="jane@company.com"
+                  className="w-full rounded-lg border border-outline-variant px-md py-sm bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none transition-shadow" 
+                />
+              </div>
+
+              {/* Role Select */}
+              <div className="flex flex-col gap-xs">
+                <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="role">Role</label>
+                <select 
+                  id="role" 
+                  name="role" 
+                  required 
+                  value={role}
+                  onChange={(e) => setRole(e.target.value as 'Sales User' | 'Admin')}
+                  className="w-full rounded-lg border border-outline-variant px-md py-sm bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none transition-shadow"
+                >
+                  <option value="Sales User">Sales User</option>
+                  <option value="Admin">Admin</option>
+                </select>
+              </div>
+
+              {/* Password */}
+              <div className="flex flex-col gap-xs">
+                <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="password">Password</label>
+                <input 
+                  id="password" 
+                  name="password" 
+                  type="password" 
+                  required 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full rounded-lg border border-outline-variant px-md py-sm bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none transition-shadow" 
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button 
+                type="submit" 
+                disabled={loading}
+                className="w-full min-h-[44px] bg-primary hover:bg-primary/90 text-on-primary font-title-md text-title-md rounded-lg shadow-sm transition-colors focus:ring-2 focus:ring-primary/20 focus:outline-none mt-sm flex items-center justify-center gap-sm disabled:opacity-50"
               >
-                <option value="Sales User">Sales User</option>
-                <option value="Admin">Admin</option>
-              </select>
+                {loading ? 'Creating Account...' : 'Create Account'}
+                <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
+              </button>
+            </form>
+
+            {/* Login Fallback */}
+            <div className="mt-xl text-center">
+              <p className="font-body-md text-body-md text-on-surface-variant">
+                Already have an account? 
+                <Link to="/login" className="text-primary font-title-md text-title-md hover:underline focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-xs ml-xs">Log in</Link>
+              </p>
             </div>
           </div>
-          <div>
-            <button
-              type="submit"
-              disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-            >
-              {loading ? 'Registering...' : 'Register'}
-            </button>
-          </div>
-          <div className="text-sm text-center">
-            <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400">
-              Already have an account? Login
-            </Link>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   );
