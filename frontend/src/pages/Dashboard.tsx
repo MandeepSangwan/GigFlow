@@ -255,7 +255,7 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Advanced Filter Bar */}
-      <div className="hidden md:flex bg-surface-container-lowest p-md rounded-2xl border border-outline-variant shadow-[0_1px_3px_rgba(0,0,0,0.1)] mb-lg flex-col xl:flex-row gap-md items-stretch xl:items-center">
+      <div className="flex bg-surface-container-lowest p-md rounded-2xl border border-outline-variant shadow-[0_1px_3px_rgba(0,0,0,0.1)] mb-lg flex-col xl:flex-row gap-md items-stretch xl:items-center">
         {/* Debounced Search */}
         <div className="w-full xl:w-1/3">
           <label className="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Search Leads</label>
