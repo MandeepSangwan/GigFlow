@@ -6,6 +6,7 @@ import { AuthContext } from '../context/AuthContext';
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = useContext(AuthContext);
@@ -26,7 +27,7 @@ const Login: React.FC = () => {
     setLoading(true);
     try {
       const res = await axios.post('/api/auth/login', { email, password });
-      login(res.data.token, res.data.refreshToken, res.data.user);
+      login(res.data.token, res.data.refreshToken, res.data.user, rememberMe);
       navigate('/');
     } catch (err: any) {
       setError(err.response?.data?.message || 'Login failed');
@@ -91,10 +92,14 @@ const Login: React.FC = () => {
           {/* Options Row */}
           <div className="flex items-center justify-between mt-xs">
             <label className="flex items-center gap-sm cursor-pointer group">
-              <input className="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary/20 bg-surface-container-lowest" type="checkbox"/>
+              <input 
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                className="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary/20 bg-surface-container-lowest" 
+                type="checkbox"
+              />
               <span className="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Remember me</span>
             </label>
-            <button onClick={() => alert("Forgot password functionality coming soon!")} type="button" className="font-label-md text-label-md text-primary hover:text-primary-container transition-colors">Forgot password?</button>
           </div>
           
           {/* Submit Action */}

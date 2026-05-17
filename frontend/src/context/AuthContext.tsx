@@ -32,9 +32,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
-    const storedRefreshToken = localStorage.getItem('refreshToken');
-    const storedUser = localStorage.getItem('user');
+    const storedToken = localStorage.getItem('token') || sessionStorage.getItem('token');
+    const storedRefreshToken = localStorage.getItem('refreshToken') || sessionStorage.getItem('refreshToken');
+    const storedUser = localStorage.getItem('user') || sessionStorage.getItem('user');
 
     if (storedToken && storedRefreshToken && storedUser) {
       setToken(storedToken);
@@ -51,13 +51,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         if (error.response?.status === 401 && !originalRequest._retry) {
           originalRequest._retry = true;
           try {
-            const currentRefreshToken = localStorage.getItem('refreshToken');
+            const currentRefreshToken = localStorage.getItem('refreshToken') || sessionStorage.getItem('refreshToken');
+            const storage = localStorage.getItem('refreshToken') ? localStorage : sessionStorage;
+            
             if (!currentRefreshToken) throw new Error('No refresh token');
 
             const res = await axios.post('/api/auth/refresh', { refreshToken: currentRefreshToken });
             const newToken = res.data.token;
             
-            localStorage.setItem('token', newToken);
+            storage.setItem('token', newToken);
             setToken(newToken);
             axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
             originalRequest.headers['Authorization'] = `Bearer ${newToken}`;
@@ -77,13 +79,27 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     };
   }, []);
 
-  const login = (newToken: string, newRefreshToken: string, newUser: User) => {
+  const login = (newToken: string, newRefreshToken: string, newUser: User, rememberMe: boolean = true) => {
     setToken(newToken);
     setRefreshToken(newRefreshToken);
     setUser(newUser);
-    localStorage.setItem('token', newToken);
-    localStorage.setItem('refreshToken', newRefreshToken);
-    localStorage.setItem('user', JSON.stringify(newUser));
+    
+    const storage = rememberMe ? localStorage : sessionStorage;
+    
+    // Clear opposite storage
+    if (rememberMe) {
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('refreshToken');
+      sessionStorage.removeItem('user');
+    } else {
+      localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('user');
+    }
+
+    storage.setItem('token', newToken);
+    storage.setItem('refreshToken', newRefreshToken);
+    storage.setItem('user', JSON.stringify(newUser));
     axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
   };
 
@@ -94,6 +110,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('user');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('refreshToken');
+    sessionStorage.removeItem('user');
     delete axios.defaults.headers.common['Authorization'];
   };
 
