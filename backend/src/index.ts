@@ -15,6 +15,9 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/leads', leadRoutes);
+// Fallback routes in case Vercel's routePrefix strips the '/api' part
+app.use('/auth', authRoutes);
+app.use('/leads', leadRoutes);
 
 const connectDB = async () => {
   try {
