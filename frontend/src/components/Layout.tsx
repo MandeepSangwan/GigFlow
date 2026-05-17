@@ -43,14 +43,14 @@ const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode }) => {
 
   return (
     <div className="bg-background text-on-background min-h-[100dvh] pb-16 md:pb-0">
-      {/* SideNavBar (Desktop Only) */}
+      {/* SideNavBar (Sirf Desktop ke liye) */}
       <nav className="hidden md:flex bg-surface-container-lowest text-primary w-[280px] h-full fixed left-0 top-0 border-r border-outline-variant flex-col py-lg px-md z-50">
-        {/* Header */}
+        {/* Header ka hissa */}
         <div className="mb-xl px-sm">
           <div className="font-headline-md text-headline-md font-bold text-primary">Smart Leads</div>
           <div className="font-label-md text-label-md text-on-surface-variant mt-xs">Lead Management</div>
         </div>
-        {/* Navigation Tabs */}
+        {/* Navigation wale Tabs */}
         <div className="flex-1 space-y-xs">
           <Link to="/" className={getSidebarLinkClass("/")}>
             <span className="material-symbols-outlined mr-md" style={location.pathname === "/" ? { fontVariationSettings: "'FILL' 1" } : {}}>dashboard</span>
@@ -65,7 +65,7 @@ const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode }) => {
             <span className="font-label-md text-label-md">Settings</span>
           </Link>
         </div>
-        {/* Footer Actions */}
+        {/* Footer ke Actions */}
         <div className="mt-auto space-y-xs pt-md border-t border-outline-variant/30">
           <div className="px-sm pb-sm mb-md flex flex-col gap-xs">
             <span className="font-label-md text-label-md text-on-surface">{user?.name}</span>
@@ -78,19 +78,19 @@ const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode }) => {
         </div>
       </nav>
 
-      {/* Main Content Canvas */}
+      {/* Main Content ka Canvas */}
       <div className="md:ml-[280px] min-h-screen flex flex-col w-full max-w-full md:max-w-[calc(100%-280px)]">
-        {/* TopNavBar */}
+        {/* Upar wala TopNavBar */}
         <header className="bg-surface text-primary docked full-width top-0 sticky z-30 border-b border-outline-variant shadow-sm flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-16">
-          {/* Mobile Brand */}
+          {/* Mobile ka Brand logo */}
           <div className="font-headline-md text-headline-md font-extrabold text-primary md:hidden">
             Smart Leads
           </div>
 
-          {/* Left Actions (Empty space to replace removed search bar on desktop) */}
+          {/* Left Actions (Desktop se hataye gaye search bar ki jagah khali space) */}
           <div className="hidden md:flex items-center flex-1 max-w-md"></div>
 
-          {/* Trailing Icons / Navigation */}
+          {/* Trailing Icons aur Navigation */}
           <div className="flex items-center space-x-xs sm:space-x-md ml-auto">
             <nav className="hidden md:flex space-x-md mr-md">
               <Link className={getTopLinkClass("/")} to="/">Dashboard</Link>
@@ -168,13 +168,13 @@ const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode }) => {
           </div>
         </header>
 
-        {/* Dashboard Content Area */}
+        {/* Dashboard ka Content Area */}
         <main className="flex-1 p-margin-mobile md:p-margin-desktop overflow-x-hidden pt-md md:pt-margin-desktop relative">
           {children}
         </main>
       </div>
 
-      {/* Mobile Bottom Navigation Bar */}
+      {/* Mobile ka Bottom Navigation Bar */}
       <nav className="md:hidden fixed bottom-0 left-0 w-full h-[64px] bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center z-40 px-2 pb-safe">
         <Link to="/" className={`flex flex-col items-center justify-center w-16 h-full ${location.pathname === '/' ? 'text-primary' : 'text-on-surface-variant'}`}>
           <span className="material-symbols-outlined text-[24px]" style={location.pathname === '/' ? { fontVariationSettings: "'FILL' 1" } : {}}>dashboard</span>

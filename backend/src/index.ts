@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/leads', leadRoutes);
-// Fallback routes in case Vercel's routePrefix strips the '/api' part
+// Vercel ke routePrefix ki wajah se '/api' hat jane par fallback routes
 app.use('/auth', authRoutes);
 app.use('/leads', leadRoutes);
 

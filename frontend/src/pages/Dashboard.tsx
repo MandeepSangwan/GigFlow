@@ -20,7 +20,7 @@ const Dashboard: React.FC = () => {
   const [error, setError] = useState('');
   const [viewingLeadId, setViewingLeadId] = useState<string | null>(null);
   
-  // Filters & Pagination
+  // Filters aur Pagination
   const [search, setSearch] = useState('');
   const debouncedSearch = useDebounce(search, 500);
   const [statusFilter, setStatusFilter] = useState('');
@@ -30,7 +30,7 @@ const Dashboard: React.FC = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalLeads, setTotalLeads] = useState(0);
 
-  // Modal State
+  // Modal ki State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingLead, setEditingLead] = useState<Lead | null>(null);
   const [formData, setFormData] = useState({ name: '', email: '', status: 'New', source: 'Website' });
@@ -149,7 +149,7 @@ const Dashboard: React.FC = () => {
           onDelete={() => handleDelete(viewingLead._id)}
           onStatusChange={(status) => handleStatusChange(viewingLead._id, status)}
         />
-        {/* Modal for editing in detail view */}
+        {/* Detail view mein edit karne ke liye Modal */}
         {isModalOpen && (
           <div className="fixed z-50 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
             <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -216,7 +216,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      {/* Page Header */}
+      {/* Page ka Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-lg gap-md">
         <div>
           <div className="uppercase font-label-sm text-[10px] tracking-wider text-on-surface-variant font-bold md:hidden mb-1">
@@ -237,7 +237,7 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Stats Cards */}
+      {/* Mobile ke liye Stats Cards */}
       <div className="grid grid-cols-2 gap-sm mb-lg md:hidden">
         <div className="bg-[#f2f0ff] rounded-[16px] p-md flex flex-col justify-center h-[100px]">
           <div className="text-primary font-bold text-[12px] mb-1">Active Leads</div>
@@ -254,9 +254,9 @@ const Dashboard: React.FC = () => {
         <button className="text-primary font-bold text-[12px]">View All</button>
       </div>
 
-      {/* Advanced Filter Bar */}
+      {/* Advanced Filter wala Bar */}
       <div className="flex bg-surface-container-lowest p-md rounded-2xl border border-outline-variant shadow-[0_1px_3px_rgba(0,0,0,0.1)] mb-lg flex-col xl:flex-row gap-md items-stretch xl:items-center">
-        {/* Debounced Search */}
+        {/* Debounced Search input */}
         <div className="w-full xl:w-1/3">
           <label className="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Search Leads</label>
           <div className="relative">
@@ -270,7 +270,7 @@ const Dashboard: React.FC = () => {
             />
           </div>
         </div>
-        {/* Filters Grid */}
+        {/* Filters ka Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-md w-full xl:w-2/3">
           <div className="w-full">
             <label className="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Status</label>
@@ -311,7 +311,7 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Lead Table Card */}
+      {/* Lead dikhane wala Table Card */}
       <div className="bg-surface-container-lowest md:rounded-2xl md:border border-outline-variant md:shadow-[0_1px_3px_rgba(0,0,0,0.1)] overflow-hidden">
         {loading ? (
           <div className="p-8 text-center text-on-surface-variant font-body-md">Loading leads...</div>
@@ -321,7 +321,7 @@ const Dashboard: React.FC = () => {
           <div className="p-8 text-center text-on-surface-variant font-body-md">No leads found.</div>
         ) : (
           <div className="w-full">
-            {/* Desktop Table View */}
+            {/* Desktop ke liye Table View */}
             <div className="hidden md:block overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
@@ -359,14 +359,14 @@ const Dashboard: React.FC = () => {
                               <option value="Qualified" className="text-on-surface bg-surface-container-lowest font-semibold">Qualified</option>
                               <option value="Lost" className="text-on-surface bg-surface-container-lowest font-semibold">Lost</option>
                             </select>
-                            {/* Colored dot */}
+                            {/* Rang wala dot */}
                             <div className={`absolute left-3 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full pointer-events-none ${
                               lead.status === 'New' ? 'bg-primary' : 
                               lead.status === 'Contacted' ? 'bg-secondary' : 
                               lead.status === 'Qualified' ? 'bg-tertiary' : 
                               lead.status === 'Lost' ? 'bg-error' : 'bg-surface-variant'
                             }`}></div>
-                            {/* Chevron icon */}
+                            {/* Chevron wala icon */}
                             <span className="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[18px] pointer-events-none">expand_more</span>
                           </div>
                         </td>
@@ -389,7 +389,7 @@ const Dashboard: React.FC = () => {
               </table>
             </div>
 
-            {/* Mobile Card View */}
+            {/* Mobile ke liye Card View */}
             <div className="md:hidden flex flex-col space-y-sm bg-background p-sm">
               {leads.map((lead) => {
                 let statusBg = 'bg-surface-variant text-on-surface-variant';
@@ -417,7 +417,7 @@ const Dashboard: React.FC = () => {
                   iconBgClass = 'bg-[#fef2f2]';
                 }
 
-                // Render specific icons based on source
+                // Source ke hisaab se alag icons dikhao
                 let IconName = 'person';
                 if (lead.source === 'Website') IconName = 'web';
                 if (lead.source === 'Referral') IconName = 'groups';
@@ -456,7 +456,7 @@ const Dashboard: React.FC = () => {
           </div>
         )}
         
-        {/* Pagination */}
+        {/* Pagination ka hissa */}
         <div className="border-t border-outline-variant px-lg py-sm flex items-center justify-between bg-surface-container-lowest">
           <span className="font-body-md text-body-md text-on-surface-variant">
             Showing <span className="font-title-md text-on-surface">{(page - 1) * 10 + 1}</span> to <span className="font-title-md text-on-surface">{Math.min(page * 10, totalLeads)}</span> of <span className="font-title-md text-on-surface">{totalLeads}</span> leads
@@ -483,7 +483,7 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Floating Action Button (FAB) */}
+      {/* Mobile ka Floating Action Button (FAB) */}
       <button 
         onClick={() => openModal()}
         className="md:hidden fixed bottom-[84px] right-4 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center z-40 hover:opacity-90 active:scale-95 transition-all"
@@ -491,7 +491,7 @@ const Dashboard: React.FC = () => {
         <span className="material-symbols-outlined text-[28px]">add</span>
       </button>
 
-      {/* Modal */}
+      {/* Modal window */}
       {isModalOpen && (
         <div className="fixed z-50 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
           <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">

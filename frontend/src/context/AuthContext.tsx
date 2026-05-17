@@ -43,7 +43,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
     }
 
-    // Axios Interceptor for 401 Unauthorized
+    // 401 Unauthorized errors ke liye Axios Interceptor
     const interceptor = axios.interceptors.response.use(
       (response) => response,
       async (error) => {
@@ -86,7 +86,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     
     const storage = rememberMe ? localStorage : sessionStorage;
     
-    // Clear opposite storage
+    // Dusri storage (localStorage ya sessionStorage) ko clear karo
     if (rememberMe) {
       sessionStorage.removeItem('token');
       sessionStorage.removeItem('refreshToken');

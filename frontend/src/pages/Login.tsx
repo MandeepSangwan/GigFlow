@@ -38,12 +38,12 @@ const Login: React.FC = () => {
 
   return (
     <div className="bg-surface-container-low relative min-h-screen flex items-center justify-center p-margin-mobile md:p-margin-desktop text-on-surface w-full overflow-hidden">
-      {/* Minimalistic Background Elements */}
+      {/* Minimalistic Background ke Elements */}
       <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-primary/10 blur-[120px] pointer-events-none mix-blend-multiply opacity-70"></div>
       <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-primary-container/20 blur-[150px] pointer-events-none mix-blend-multiply opacity-70"></div>
       
       <main className="relative z-10 w-full max-w-[440px] bg-surface-container-lowest rounded-2xl shadow-lg border border-outline-variant p-xl md:p-2xl flex flex-col">
-        {/* Header */}
+        {/* Header ka hissa */}
         <div className="text-center mb-xl">
           <h1 className="font-serif text-[32px] font-bold text-primary mb-xs" style={{ fontFamily: 'Georgia, serif' }}>Smart Leads</h1>
           <p className="font-body-md text-body-md text-on-surface-variant">Sign in to manage your pipeline</p>
@@ -51,9 +51,9 @@ const Login: React.FC = () => {
         
         
 
-        {/* Form */}
+        {/* Form ka hissa */}
         <form className="flex flex-col gap-lg" onSubmit={handleSubmit} noValidate>
-          {/* Email Field */}
+          {/* Email wala Field */}
           <div className="flex flex-col gap-base">
             <label className="font-label-md text-label-md text-on-surface" htmlFor="email">Work Email</label>
             <div className="relative">
@@ -75,7 +75,7 @@ const Login: React.FC = () => {
             )}
           </div>
           
-          {/* Password Field */}
+          {/* Password wala Field */}
           <div className="flex flex-col gap-base">
             <label className="font-label-md text-label-md text-on-surface" htmlFor="password">Password</label>
             <input 
@@ -89,7 +89,7 @@ const Login: React.FC = () => {
             />
           </div>
           
-          {/* Options Row */}
+          {/* Options wali Line */}
           <div className="flex items-center justify-between mt-xs">
             <label className="flex items-center gap-sm cursor-pointer group">
               <input 
@@ -102,7 +102,7 @@ const Login: React.FC = () => {
             </label>
           </div>
           
-          {/* Submit Action */}
+          {/* Submit karne ka Action */}
           <button 
             type="submit" 
             disabled={loading}

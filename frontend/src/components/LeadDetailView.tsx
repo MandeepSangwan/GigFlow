@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Lead } from '../pages/Dashboard'; // Need to export Lead from Dashboard or define it here
+import { Lead } from '../pages/Dashboard'; // Lead interface ko Dashboard se export karna padega ya yahan define karo
 
 interface LeadDetailViewProps {
   lead: Lead;
@@ -20,7 +20,7 @@ const LeadDetailView: React.FC<LeadDetailViewProps> = ({ lead, onBack, onEdit, o
 
   return (
     <div className="flex flex-col h-full bg-background min-h-screen">
-      {/* Header */}
+      {/* Header ka hissa */}
       <div className="flex flex-col gap-sm mb-lg">
         <button onClick={onBack} className="flex items-center text-on-surface-variant font-label-sm text-[12px] hover:text-primary transition-colors self-start">
           <span className="material-symbols-outlined text-[16px] mr-1">arrow_back</span>
@@ -36,7 +36,7 @@ const LeadDetailView: React.FC<LeadDetailViewProps> = ({ lead, onBack, onEdit, o
               </span>
             </div>
             <p className="font-body-md text-on-surface-variant mt-1 text-[14px]">
-              VP of Operations at TechCorp Inc. {/* Hardcoded placeholder for now since we don't have company in schema */}
+              VP of Operations at TechCorp Inc. {/* Abhi ke liye hardcoded placeholder kyunki schema mein company nahi hai */}
             </p>
           </div>
           <div className="flex items-center gap-sm">
@@ -52,7 +52,7 @@ const LeadDetailView: React.FC<LeadDetailViewProps> = ({ lead, onBack, onEdit, o
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-lg">
         <div className="lg:col-span-2 flex flex-col gap-lg">
-          {/* Contact Information */}
+          {/* Contact ki jaankari */}
           <div className="bg-surface-container-lowest rounded-2xl border border-outline-variant p-md md:p-lg">
             <h2 className="font-headline-md text-[18px] font-bold mb-lg">Contact Information</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-lg gap-x-md">
@@ -101,7 +101,7 @@ const LeadDetailView: React.FC<LeadDetailViewProps> = ({ lead, onBack, onEdit, o
             </div>
           </div>
 
-          {/* Sales Notes */}
+          {/* Sales ke Notes */}
           <div className="bg-surface-container-lowest rounded-2xl border border-outline-variant p-md md:p-lg mb-lg">
             <h2 className="font-headline-md text-[18px] font-bold mb-lg">Sales Notes</h2>
             
@@ -139,7 +139,7 @@ const LeadDetailView: React.FC<LeadDetailViewProps> = ({ lead, onBack, onEdit, o
           </div>
         </div>
 
-        {/* Activity Timeline */}
+        {/* Activity ki Timeline */}
         <div className="bg-surface-container-lowest rounded-2xl border border-outline-variant p-md md:p-lg lg:h-fit">
           <h2 className="font-headline-md text-[18px] font-bold mb-lg">Activity Timeline</h2>
           <div className="relative border-l border-outline-variant/50 ml-3 space-y-6 pb-4">

@@ -31,7 +31,7 @@ const Register: React.FC = () => {
 
   return (
     <div className="bg-background text-on-background min-h-screen flex overflow-x-hidden w-full">
-      {/* Left Branding Section (Hidden on mobile) */}
+      {/* Left side ka Branding Section (Mobile par chhipa hua) */}
       <div className="hidden lg:flex lg:w-1/2 bg-surface-variant relative items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img alt="B2B abstract" className="object-cover w-full h-full opacity-60 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzpv3CAHKyRqV1eyByMcqFvRCumAHyPPgebmFpSqlbL9wgBdLXTJI-HM4ftfEAKWmUFhUcDaOeH_9isrBumMpYLeT-2wN29_jwkfVdyRFkLFYAjFv-XW7IITh6birQWO0r0CmiG1vaa5Jjf69cqLs5CzOJMYSfcRUaPSboMjx30eXkGXQtXIEBXsAh0MW-qfEkvyl_5awCsPN9q3KJbZlsKA8D6Qd62XTlG---HchbyC_f_0M0rEqWSPyZCX4yjlS42gHSTZCBPI8"/>
@@ -48,16 +48,16 @@ const Register: React.FC = () => {
         </div>
       </div>
 
-      {/* Right Form Section */}
+      {/* Right side ka Form Section */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-margin-mobile lg:p-margin-desktop bg-background">
         <div className="w-full max-w-md">
-          {/* Mobile Logo Header */}
+          {/* Mobile ke liye Logo Header */}
           <div className="lg:hidden flex items-center gap-sm mb-xl justify-center">
             <span className="material-symbols-outlined text-[32px] text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>leaderboard</span>
             <span className="font-headline-md text-headline-md font-extrabold text-primary">Smart Leads</span>
           </div>
 
-          {/* Registration Card */}
+          {/* Registration wala Card */}
           <div className="bg-surface-container-lowest rounded-2xl shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.05)] border border-outline-variant p-lg md:p-xl w-full">
             <div className="mb-xl">
               <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">Create your account</h2>
@@ -67,7 +67,7 @@ const Register: React.FC = () => {
             {error && <div className="bg-error-container text-on-error-container p-3 rounded-md text-sm mb-4 font-body-md">{error}</div>}
 
             <form className="space-y-lg flex flex-col" onSubmit={handleSubmit}>
-              {/* Full Name */}
+              {/* Pura Naam */}
               <div className="flex flex-col gap-xs">
                 <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="fullName">Full Name</label>
                 <input 
@@ -97,7 +97,7 @@ const Register: React.FC = () => {
                 />
               </div>
 
-              {/* Role Select */}
+              {/* Role Select karne ka option */}
               <div className="flex flex-col gap-xs">
                 <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="role">Role</label>
                 <select 
@@ -128,7 +128,7 @@ const Register: React.FC = () => {
                 />
               </div>
 
-              {/* Submit Button */}
+              {/* Submit karne ka Button */}
               <button 
                 type="submit" 
                 disabled={loading}
@@ -139,7 +139,7 @@ const Register: React.FC = () => {
               </button>
             </form>
 
-            {/* Login Fallback */}
+            {/* Login Fallback wala link */}
             <div className="mt-xl text-center">
               <p className="font-body-md text-body-md text-on-surface-variant">
                 Already have an account? 
