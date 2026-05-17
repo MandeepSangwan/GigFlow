@@ -91,21 +91,18 @@ const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode }) => {
           <div className="hidden md:flex items-center flex-1 max-w-md"></div>
 
           {/* Trailing Icons / Navigation */}
-          <div className="flex items-center space-x-md ml-auto">
+          <div className="flex items-center space-x-xs sm:space-x-md ml-auto">
             <nav className="hidden md:flex space-x-md mr-md">
               <Link className={getTopLinkClass("/")} to="/">Dashboard</Link>
             </nav>
-            
-            <button className="p-xs text-on-surface-variant hover:text-primary transition-all rounded-full hover:bg-surface-container md:hidden">
-              <span className="material-symbols-outlined text-[24px]">search</span>
-            </button>
 
             <button 
               onClick={() => setDarkMode(!darkMode)}
-              className="p-xs text-on-surface-variant hover:text-primary transition-all rounded-full hover:bg-surface-container hidden md:block"
+              className="p-xs text-on-surface-variant hover:text-primary transition-all rounded-full hover:bg-surface-container"
             >
               <span className="material-symbols-outlined">{darkMode ? 'light_mode' : 'dark_mode'}</span>
             </button>
+
             <div className="relative" ref={notifRef}>
               <button 
                 onClick={() => { setShowNotifications(!showNotifications); setShowProfile(false); }} 
@@ -115,11 +112,11 @@ const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode }) => {
                 <span className="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
               </button>
               {showNotifications && (
-                <div className="absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant overflow-hidden z-50">
+                <div className="fixed top-[72px] left-4 right-4 md:absolute md:top-auto md:left-auto md:right-0 md:mt-2 md:w-80 bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant overflow-hidden z-50 flex flex-col shadow-2xl">
                   <div className="px-md py-sm bg-surface-container border-b border-outline-variant font-title-md text-title-md text-on-surface">
                     Inbox
                   </div>
-                  <div className="max-h-[300px] overflow-y-auto">
+                  <div className="max-h-[60vh] md:max-h-[300px] overflow-y-auto">
                     <div className="p-md border-b border-outline-variant/50 hover:bg-surface-container/50 cursor-pointer transition-colors">
                       <div className="font-title-md text-title-md text-primary">New Lead Assigned</div>
                       <div className="font-body-sm text-body-sm text-on-surface-variant mt-xs">Jane Doe from Website has been assigned to you.</div>
@@ -138,12 +135,12 @@ const Layout: React.FC<LayoutProps> = ({ children, darkMode, setDarkMode }) => {
             <div className="relative" ref={profileRef}>
               <div 
                 onClick={() => { setShowProfile(!showProfile); setShowNotifications(false); }} 
-                className="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-title-md text-title-md ml-sm cursor-pointer hover:opacity-90 transition-opacity"
+                className="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-title-md text-title-md ml-xs sm:ml-sm cursor-pointer hover:opacity-90 transition-opacity"
               >
                 {user?.name?.charAt(0).toUpperCase() || 'U'}
               </div>
               {showProfile && (
-                <div className="absolute right-0 mt-2 w-[320px] bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant p-md z-50">
+                <div className="fixed top-[72px] left-4 right-4 md:absolute md:top-auto md:left-auto md:right-0 md:mt-2 md:w-[320px] bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant p-md z-50 shadow-2xl">
                   <div className="flex items-center gap-md mb-md border-b border-outline-variant/50 pb-md">
                     <div className="w-12 h-12 shrink-0 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-headline-md text-headline-md">
                       {user?.name?.charAt(0).toUpperCase() || 'U'}
