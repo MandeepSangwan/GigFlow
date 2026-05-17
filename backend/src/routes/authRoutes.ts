@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
-import { register, login } from '../controllers/authController';
+import { register, login, refresh } from '../controllers/authController';
 
 const router = Router();
 
@@ -22,5 +22,7 @@ router.post(
   ],
   login
 );
+
+router.post('/refresh', refresh);
 
 export default router;

@@ -65,12 +65,46 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       role: user.role
     };
 
-    const token = jwt.sign(payload, process.env.JWT_SECRET as string, {
-      expiresIn: '1d'
+    const accessToken = jwt.sign(payload, process.env.JWT_SECRET as string, {
+      expiresIn: '15m'
+    });
+    const refreshToken = jwt.sign(payload, process.env.JWT_SECRET as string, {
+      expiresIn: '7d'
     });
 
-    res.status(200).json({ token, user: { id: user._id, name: user.name, email: user.email, role: user.role } });
+    res.status(200).json({ token: accessToken, refreshToken, user: { id: user._id, name: user.name, email: user.email, role: user.role } });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error });
+  }
+};
+
+export const refresh = async (req: Request, res: Response): Promise<void> => {
+  const { refreshToken } = req.body;
+  if (!refreshToken) {
+    res.status(401).json({ message: 'No refresh token provided' });
+    return;
+  }
+
+  try {
+    const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET as string) as any;
+    
+    const user = await User.findById(decoded.id);
+    if (!user) {
+      res.status(401).json({ message: 'User not found' });
+      return;
+    }
+
+    const payload = {
+      id: user._id,
+      role: user.role
+    };
+
+    const newAccessToken = jwt.sign(payload, process.env.JWT_SECRET as string, {
+      expiresIn: '15m'
+    });
+
+    res.status(200).json({ token: newAccessToken });
+  } catch (error) {
+    res.status(401).json({ message: 'Invalid refresh token' });
   }
 };
