@@ -5,5 +5,15 @@
 @layer base {
   body {
     @apply antialiased;
+    transition: filter 0.3s ease, background-color 0.3s ease;
   }
+}
+
+.dark body {
+  background-color: #111;
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.dark img, .dark video, .dark iframe, .dark .material-symbols-outlined {
+  filter: invert(1) hue-rotate(180deg);
 }
