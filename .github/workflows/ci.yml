@@ -8,4 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Hello Mandeep! Pipeline is working."
+      - run: echo "Step 1: Installing project"
+
+      - run: echo "Step 2: Running tests"
+
+       - run: echo "Step 3: Building project"
+
+       - run: echo "Step 4: Deployment completed"
